@@ -1,0 +1,5 @@
+flask>=2.0.0
+requests
+scooby
+pytest
+pytest-cov

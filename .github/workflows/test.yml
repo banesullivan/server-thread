@@ -1,0 +1,43 @@
+name: Tests
+on:
+  pull_request:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [3.7, 3.8, 3.9, "3.10"]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      - name: Install server-thread
+        run: pip install -e .
+      - name: Scooby Report
+        run: python -c "import server_thread;print(server_thread.Report())"
+      - name: Run Tests
+        run: |
+          pytest -v --cov=server_thread
+          coverage xml -o coverage.xml
+      # - name: Run Doc Tests
+      #   run: |
+      #     make doctest
+      - name: Stash coverage
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage.xml
+          path: coverage.xml
+      - uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage.xml
+          verbose: true

@@ -1,0 +1,2 @@
+graft server_thread
+global-exclude *.pyc

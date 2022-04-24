@@ -1,0 +1,16 @@
+**/node_modules/
+*.pyc
+*.egg-info
+dist/
+build/
+**/.DS_Store
+.coverage
+.coverage*
+gdalwmscache
+htmlcov
+
+electron
+notebooks
+.pytest_cache
+.ipynb_checkpoints
+bin/
