@@ -1,4 +1,3 @@
-import contextlib
 import logging
 import os
 import threading
@@ -133,8 +132,8 @@ class ASGIServer(ServerBase):
         if self.server.started:
             if (
                 hasattr(self.server, "servers")
-                and len(self.server.servers)
-                and len(self.server.servers[0].sockets)
+                and len(self.server.servers)  # noqa: W503
+                and len(self.server.servers[0].sockets)  # noqa: W503
             ):
                 return self.server.servers[0].sockets[0]
             else:
