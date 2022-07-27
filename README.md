@@ -5,7 +5,7 @@
 [![PyPI](https://img.shields.io/pypi/v/server-thread.svg?logo=python&logoColor=white)](https://pypi.org/project/server-thread/)
 [![conda](https://img.shields.io/conda/vn/conda-forge/server-thread.svg?logo=conda-forge&logoColor=white)](https://anaconda.org/conda-forge/server-thread)
 
-Launch a WSGIApplication in a background thread with werkzeug.
+Launch a WSGI or ASGI Application in a background thread with werkzeug or uvicorn.
 
 This application was created for [`localtileserver`](https://github.com/banesullivan/localtileserver)
 and provides the basis for how it can launch an image tile server as a
@@ -17,9 +17,9 @@ Python packages I have created that require a background service.
 
 ## 🚀 Usage
 
-Use the `ServerThread` with any WSGIApplication.
+Use the `ServerThread` with any WSGI or ASGI Application.
 
-Start by creating a WSGIApplication (this can be a flask app or a simple app
+Start by creating a application (this can be a flask app or a simple app
 like below):
 
 
@@ -79,4 +79,44 @@ If filing a bug report, please share a scooby `Report`:
 ```py
 import server_thread
 print(server_thread.Report())
+```
+
+
+## 🚀 Examples
+
+Minimal examples for using `server-thread` with common micro-frameworks.
+
+
+### 💨 FastAPI
+
+```py
+from fastapi import FastAPI
+
+app = FastAPI()
+
+
+@app.get("/")
+def root():
+    return {"message": "Howdy!"}
+
+
+server = ServerThread(app)
+requests.get(f"http://{server.host}:{server.port}/").json()
+```
+
+### ⚗️ Flask
+
+```py
+from flask import Flask
+
+app = Flask("testapp")
+
+
+@app.route("/")
+def howdy():
+    return {"message": "Howdy!"}
+
+
+server = ServerThread(app)
+requests.get(f"http://{server.host}:{server.port}/").json()
 ```

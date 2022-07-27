@@ -3,3 +3,5 @@ requests
 scooby
 pytest
 pytest-cov
+fastapi
+uvicorn

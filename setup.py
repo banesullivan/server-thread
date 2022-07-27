@@ -13,14 +13,14 @@ else:
     long_description = ""
 
 # major, minor, patch
-version_info = 0, 1, 0
+version_info = 0, 2, 0
 # Nice string for the version
 __version__ = ".".join(map(str, version_info))
 
 setup(
     name="server-thread",
     version=__version__,
-    description="Launch a WSGIApplication in a background thread with werkzeug.",
+    description="Launch a WSGI or ASGI Application in a background thread with werkzeug or uvicorn.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Bane Sullivan",
@@ -39,6 +39,7 @@ setup(
     python_requires=">=3.7",
     install_requires=[
         "scooby",
+        "uvicorn",
         "werkzeug",
     ],
 )
