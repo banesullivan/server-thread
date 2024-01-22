@@ -90,7 +90,9 @@ Minimal examples for using `server-thread` with common micro-frameworks.
 ### 💨 FastAPI
 
 ```py
+import requests
 from fastapi import FastAPI
+from server_thread import ServerThread
 
 app = FastAPI()
 
@@ -107,7 +109,9 @@ requests.get(f"http://{server.host}:{server.port}/").json()
 ### ⚗️ Flask
 
 ```py
+import requests
 from flask import Flask
+from server_thread import ServerThread
 
 app = Flask("testapp")
 
