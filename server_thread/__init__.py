@@ -3,4 +3,4 @@ from server_thread.report import Report
 from server_thread.server import ServerDownError, ServerManager, ServerThread, launch_server
 
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
