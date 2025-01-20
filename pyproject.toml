@@ -1,3 +1,35 @@
+[project]
+name = "server-thread"
+description = "Launch a WSGI or ASGI Application in a background thread with werkzeug or uvicorn."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Bane Sullivan", email = "hello@banesullivan.com"},
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python",
+]
+dynamic = ["version"]
+dependencies = [
+    "scooby",
+    "uvicorn",
+    "werkzeug",
+]
+
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
 [tool.black]
 line-length = 100
 skip-string-normalization = false
