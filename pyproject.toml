@@ -1,3 +1,10 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.dynamic]
+version = { attr = 'server_thread.__version__' }
+
 [project]
 name = "server-thread"
 description = "Launch a WSGI or ASGI Application in a background thread with werkzeug or uvicorn."
@@ -25,10 +32,6 @@ dependencies = [
     "uvicorn",
     "werkzeug",
 ]
-
-[build-system]
-requires = ["setuptools >= 61.0"]
-build-backend = "setuptools.build_meta"
 
 [tool.black]
 line-length = 100
